@@ -114,7 +114,10 @@ const data = [
 
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
+
 */
+
+document.querySelector(".article-open");
 function articleMaker({ title, content }) {
   //   <div class="article">
   //   <h2>{title of the article}</h2>
@@ -132,32 +135,33 @@ function articleMaker({ title, content }) {
   const p3 = document.createElement("p");
   const button = document.createElement("span");
 
-  article.classList.add("article");
+  article.classList.add("article", "article-open");
   date.classList.add("data");
   button.classList.add("expandButton");
 
-  button.addEventListener("click", function (e) {
-    e.target.classList.toggle(".article-open");
+  article.appendChild(title2);
+  article.appendChild(date);
+  article.appendChild(p);
+  article.appendChild(p2);
+  article.appendChild(p3);
+  article.appendChild(button);
+
+  title2.textContent = data[0]["title"];
+  date.textContent = data[0]["date"];
+  p.textContent = data[1]["firstParagraph"];
+  p2.textContent = data[1]["secondParagraph"];
+  p3.textContent = data[1]["thirdParagraph"];
+  button.textContent = "submit";
+
+  button.addEventListener("click", () => {
+    article.classList.toggle("article-open");
   });
-
-  // <div class="article">
-  // //   <h2>{title of the article}</h2>
-  // //   <p class="date">{date of the article}</p>
-
-  // //   {three separate paragraph elements}
-
-  // //   <span class="expandButton">+</span>
-  // // </div>
-
-  article.appendChild(title2, date, button, p, p2, p3);
 
   return article;
 }
 
-const panelElements = data.map((panelElm) => {
-  return articleMaker(panelElm);
-});
-
-panelElements.forEach((articles) => {
-  articles.appendChild(articles);
+console.log(articleMaker);
+data.forEach((addArticles) => {
+  const articles = document.querySelector(".articles");
+  articles.appendChild(articleMaker(addArticles));
 });
