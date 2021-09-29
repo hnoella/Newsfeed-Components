@@ -117,8 +117,13 @@ const data = [
 
 */
 
-document.querySelector(".article-open");
-function articleMaker({ title, content }) {
+function articleMaker({
+  title,
+  date,
+  firstParagraph,
+  secondParagraph,
+  thirdParagraph,
+}) {
   //   <div class="article">
   //   <h2>{title of the article}</h2>
   //   <p class="date">{date of the article}</p>
@@ -129,28 +134,28 @@ function articleMaker({ title, content }) {
   // </div>
   const article = document.createElement("div");
   const title2 = document.createElement("h3");
-  const date = document.createElement("p");
+  const date2 = document.createElement("p");
   const p = document.createElement("p");
   const p2 = document.createElement("p");
   const p3 = document.createElement("p");
   const button = document.createElement("span");
 
   article.classList.add("article", "article-open");
-  date.classList.add("data");
+  date2.classList.add("data");
   button.classList.add("expandButton");
 
   article.appendChild(title2);
-  article.appendChild(date);
+  article.appendChild(date2);
   article.appendChild(p);
   article.appendChild(p2);
   article.appendChild(p3);
   article.appendChild(button);
 
-  title2.textContent = data[0]["title"];
-  date.textContent = data[0]["date"];
-  p.textContent = data[1]["firstParagraph"];
-  p2.textContent = data[1]["secondParagraph"];
-  p3.textContent = data[1]["thirdParagraph"];
+  title2.textContent = title;
+  date2.textContent = date;
+  p.textContent = firstParagraph;
+  p2.textContent = secondParagraph;
+  p3.textContent = thirdParagraph;
   button.textContent = "submit";
 
   button.addEventListener("click", () => {
