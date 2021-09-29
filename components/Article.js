@@ -140,5 +140,24 @@ function articleMaker({ title, content }) {
     e.target.classList.toggle(".article-open");
   });
 
+  // <div class="article">
+  // //   <h2>{title of the article}</h2>
+  // //   <p class="date">{date of the article}</p>
+
+  // //   {three separate paragraph elements}
+
+  // //   <span class="expandButton">+</span>
+  // // </div>
+
+  article.appendChild(title2, date, button, p, p2, p3);
+
   return article;
 }
+
+const panelElements = data.map((panelElm) => {
+  return articleMaker(panelElm);
+});
+
+panelElements.forEach((articles) => {
+  articles.appendChild(articles);
+});
